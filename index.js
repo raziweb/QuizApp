@@ -3,7 +3,10 @@ const app = express();
 const path = require('path');
 const ejsMate = require('ejs-mate');
 const mongoose = require('mongoose');
+const Quiz = require('./models/quiz');
+const Question = require('./models/question')
 
+//Connecting database
 mongoose.connect('mongodb://localhost:27017/quiz-app', {
     useNewUrlParser: true,
     useCreateIndex: true,
@@ -24,8 +27,17 @@ app.get('/', (req, res) => {
     res.send("Quiz App");
 })
 
-app.get('/quizzes', (req, res) => {
-    res.render('quizzes/index');
+app.get('/quizzes', async (req, res) => {
+    const quizzes = await Quiz.find({});
+    res.render('quizzes/index', { quizzes });
+})
+
+app.get('/quizzes/:id', async (req, res) => {
+    const quiz = await Quiz.findById(req.params.id).populate({
+        path: 'questions'
+    });
+    //console.log(quiz.questions[0].option[2]);
+    res.render('quizzes/show', { quiz });
 })
 
 app.listen(3000, () => {
