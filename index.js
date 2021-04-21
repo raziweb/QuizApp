@@ -22,6 +22,7 @@ app.use(express.static(path.join(__dirname, '/public')));
 app.set('view engine', 'ejs');
 app.engine('ejs', ejsMate);
 app.set('views', path.join(__dirname, '/views'));
+app.use(express.urlencoded({ extended: true }));
 
 app.get('/', (req, res) => {
     res.send("Quiz App");
@@ -38,6 +39,22 @@ app.get('/quizzes/:id', async (req, res) => {
     });
     //console.log(quiz.questions[0].option[2]);
     res.render('quizzes/show', { quiz });
+})
+
+app.get('/quizzes/:id/questions', async (req, res) => {
+    const quiz = await Quiz.findById(req.params.id).populate({
+        path: 'questions'
+    });
+    res.render('quizzes/questions', { quiz });
+})
+
+app.post('/quizzes/:id/questions/evaluate', async (req, res) => {
+    // const quiz = await Quiz.findById(req.params.id).populate({
+    //     path: 'questions'
+    // });
+    // res.render('quizzes/questions', { quiz });
+    console.log(req.body);
+    res.redirect('/quizzes');
 })
 
 app.listen(3000, () => {
