@@ -1,0 +1,16 @@
+<% layout('layouts/boilerplate') %>
+<h3 class="text-center">Quiz Score</h3>
+<div class="row">
+    <div class="col-lg-3"></div>
+    
+    <div class="col-lg-6">
+        <div class="card shadow p-3 mb-5 mt-2 bg-body rounded">
+            <div class="card-body">
+                <h3 class="card-title">Quiz  : <%= quiz.name %></h6>
+                <h3 class="card-title">Score : <%= score %>/<%= quiz.questions.length %></h6>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-lg-3"></div>
+</div>

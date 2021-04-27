@@ -13,7 +13,7 @@ const quizSchema = new Schema({
     questions: [{
         type: Schema.Types.ObjectId,
         ref: 'Question',
-        required: true
+        //required: true
     }]
 });
 

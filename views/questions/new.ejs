@@ -1,0 +1,37 @@
+<% layout('layouts/boilerplate') %>
+<div class="row">
+    <div class="col-md-6 offset-md-3 mb-3">
+        <h1>Add question in <%= quiz.name %> quiz</h1>
+        <form action="/quizzes/<%= quiz._id %>/questions" method="POST" class="needs-validation" novalidate>
+            <div class="mb-3">
+                <label for="question" class="form-label">Question</label>
+                <input type="text" class="form-control" id="question" name="question" placeholder="Question" required>
+            </div>
+            <div class="mb-3">
+                <label for="option1" class="form-label">Option 1</label>
+                <input type="text" class="form-control" id="option1" name="option[]" placeholder="Option 1" required>
+            </div>
+            <div class="mb-3">
+                <label for="option2" class="form-label">Option 2</label>
+                <input type="text" class="form-control" id="option2" name="option[]" placeholder="Option 2" required>
+            </div>
+            <div class="mb-3">
+                <label for="option3" class="form-label">Option 3</label>
+                <input type="text" class="form-control" id="option3" name="option[]" placeholder="Option 3" required>
+            </div>
+            <div class="mb-3">
+                <label for="option4" class="form-label">Option 4</label>
+                <input type="text" class="form-control" id="option4" name="option[]" placeholder="Option 4" required>
+            </div>
+            <div class="mb-3">
+                <label for="answer" class="form-label">Answer (between 1 to 4 corresponding to the option)</label>
+                <input type="number" class="form-control" id="answer" name="answer" placeholder="Answer" required>
+            </div>
+            <button class="btn btn-success btn-large">Add this questions</button>
+        </form>
+        <div class="text-center">
+            <a href="/quizzes" class="btn btn-primary btn-large">Done</a>
+        </div>
+        
+    </div>
+</div>
