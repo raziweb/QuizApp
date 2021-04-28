@@ -13,6 +13,7 @@ db.once("open", () => {
 
 const Question = require('../models/question');
 const Quiz = require('../models/quiz');
+const User = require('../models/user');
 
 
 //--------------- Creating example questions -------------//
@@ -83,3 +84,14 @@ const Quiz = require('../models/quiz');
 //     console.log("Something went wrong");
 //     console.log(err);
 // })
+
+// const user = new User({
+//     name: 'Razi Shahid',
+//     email: 'razi@xyz.com',
+//     isTeacher: 0,
+//     username: 'razi456',
+//     score: [{ quiz: 'IWT Lab', marks: 4 }, { quiz: 'SE', marks: 5 }]
+// });
+// const newUser = await User.register(user, 'chicken');
+// console.log(newUser);
+    

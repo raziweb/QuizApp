@@ -14,7 +14,11 @@ const quizSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'Question',
         //required: true
-    }]
+    }],
+    author: {
+        type: Schema.Types.ObjectId,
+        ref: 'User'
+    }
 });
 
 module.exports = mongoose.model('Quiz', quizSchema);
